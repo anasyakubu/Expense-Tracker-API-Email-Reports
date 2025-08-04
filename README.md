@@ -163,7 +163,3 @@ Pull requests are welcome! Please open issues for suggestions or bugs.
 **Anas Yakubu**
 [Portfolio](https://anasyakubu.netlify.app) | [GitHub](https://github.com/anasyakubu)
 
-```
-
----
-```
