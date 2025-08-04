@@ -2,6 +2,7 @@
 # 💸 Expense Tracker API with Email Reports
 
 A secure and scalable RESTful API built with **Node.js**, **TypeScript**, and **MongoDB** to help users track income and expenses. Users can also receive **automated email reports** via **AWS SES** and deploy the entire system on **AWS EC2**.
+```
 
 ---
 
