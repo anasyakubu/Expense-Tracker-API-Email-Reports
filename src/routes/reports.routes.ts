@@ -1,5 +1,5 @@
 import express from 'express';
-import { sendEmail } from '../utils/sendEmail';
+import SendEmail from '../utils/sendEmail';
 import Transaction from '../models/transaction.model'; // adjust your path
 import { requireAuth } from "../middleware/authMiddleware"; // JWT middleware
 
@@ -26,9 +26,12 @@ router.post('/send', requireAuth, async (req, res) => {
 
     // console.log(reportHTML); // for debugging (1)
 
-    await sendEmail(email, 'Your Monthly Expense Report', reportHTML);
+    const send_email = new SendEmail(email, 'Your Monthly Expense Report', reportHTML);
+    send_email.send();
+
 
     res.json({ message: 'Report sent successfully!' });
+
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: 'Could not send report' });

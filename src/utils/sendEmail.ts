@@ -6,23 +6,25 @@ const ses = new AWS.SES({
   secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
 });
 
-export const sendEmail = async (to: string, subject: string, html: string) => {
-  const params = {
-    Source: process.env.SES_EMAIL_FROM!,
-    Destination: {
-      ToAddresses: [to],
-    },
-    Message: {
-      Subject: {
-        Data: subject,
-      },
-      Body: {
-        Html: {
-          Data: html,
+class SendEmail {
+
+  constructor(public to: string, public subject: string, public html: string) { }
+
+  public async send() {
+    const params = {
+      Source: process.env.SES_EMAIL_FROM!,
+      Destination: { ToAddresses: [this.to], },
+      Message: {
+        Subject: { Data: this.subject, },
+        Body: {
+          Html: { Data: this.html, },
         },
       },
-    },
-  };
+    };
 
-  return ses.sendEmail(params).promise();
-};
+    return ses.sendEmail(params).promise();
+  }
+}
+
+
+export default SendEmail;
