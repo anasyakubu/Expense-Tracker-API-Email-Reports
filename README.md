@@ -1,6 +1,3 @@
-
----
-
 ```md
 # 💸 Expense Tracker API with Email Reports
 
