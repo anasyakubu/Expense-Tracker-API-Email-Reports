@@ -27,12 +27,13 @@ router.post('/send', requireAuth, async (req, res) => {
     // console.log(reportHTML); // for debugging (1)
 
     const send_email = new SendEmail(email, 'Your Monthly Expense Report', reportHTML);
-    send_email.send();
+    send_email.send(); // call the class child
 
 
     res.json({ message: 'Report sent successfully!' });
 
   } catch (err) {
+
     console.error(err);
     res.status(500).json({ error: 'Could not send report' });
   }
